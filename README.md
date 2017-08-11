@@ -1,5 +1,4 @@
-# talk.duyet.net
-Duyet talk!
+Seminar, introduction, ...
 
 * Introduction about BGate Ad-Exchange Project (SHTP) - [/intro-bgate](http://talk.duyet.net/intro-bgate)
 * Reviews Mining - [/reviews-sentiment](http://talk.duyet.net/reviews-sentiment)
