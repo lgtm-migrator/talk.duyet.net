@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>BGate Intro</title>
+
+  <meta name="description" content="Node.js - BGate Introduction">
+  <meta name="author" content="Van-Duyet Le">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+  <style type="text/css">
+    .slides img {
+      border: 0 !important;
+      box-shadow: none !important
+    }
+
+    .fast {
+      color: #D8582B;
+    }
+
+    .secure {
+      color: #16A314;
+    }
+
+    .professional {
+      color: #3B6FBA;
+    }
+
+    .left {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <div class="slides">
+      <section>
+        <p class="small" style="">Báo cáo thực tập tốt nghiệp</p>
+        <h3>Nghiên cứu Nodejs <br /> dự án quảng cáo Bgate</h3>
+
+        <br />
+        <p class="author">Lê Văn Duyệt - 13520171</p>
+      </section>
+
+
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <section>
+        <ol>
+          <li>Phòng TN Hệ thống thông tin</li>
+          <li>Tìm hiểu về Node.js</li>
+          <li>Dự án BGate</li>
+        </ol>
+
+        <aside class="notes">
+          báo cáo sẽ gồm 3 phần, giới thiệu về phòng tn, công việc chính là tìm hiểu về công nghệ nodejs và các ứng dụng
+          <br /> Nodejs : một công nghệ khá là hot hiện nay.
+          <br /> Điểm mạnh của Node.js
+        </aside>
+      </section>
+
+
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <section>
+        <p>Giới thiệu</p>
+        <h3>Phòng TN Hệ thống thông tin</h3>
+      </section>
+
+      <section>
+        <p>
+          Phòng TN HTTT trực thuộc trường Đại học Công nghệ thông tin – Đại học Quốc gia TP. Hồ Chí Minh
+        </p>
+
+        <p>
+          Thành lập 02/2012
+        </p>
+
+        <aside class="notes">
+          Với sứ mạng tăng cường năng lực đào tạo, nghiên cứu và chuyển giao công nghệ về Hệ thống thông tin
+
+          <br /> phục vụ các mục tiêu phát triển kinh tế, xã hội của đất nước
+        </aside>
+
+      </section>
+
+      <section>
+        <h5>
+					Hướng nghiên cứu
+				</h5>
+
+        <ul>
+          <li>Hệ thống thông tin tri thức.</li>
+          <li>Hệ thống thông tin di động.</li>
+          <li>Hệ thống thông tin hình ảnh và không gian.</li>
+        </ul>
+
+
+        <aside class="notes">
+          Khi tham gia vào quá trình thực tập tại Phòng Thí nghiệm Hệ thống thông tin với , thực hiện nhiều nhiệm vụ được giao: Nghiên cứu các công nghệ của Javascript /Node.js, thực hiện các dự án ứng dụng công nghệ Node.js.
+        </aside>
+
+      </section>
+
+      <section>
+        <h5>
+					Nhiệm vụ
+				</h5>
+        <ul>
+          <li>Nghiên cứu công nghệ Node.js và Socket.io.</li>
+          <li>Seminar giới thiệu về Node.js</li>
+          <li>Tìm hiểu về các hệ thống quảng cáo trực tuyến, Real-time Bidding (RTB).</li>
+          <li>Cài đặt dự án quảng cáo Ad Exchange (cho công ty BGate)</li>
+        </ul>
+
+        <aside class="notes">
+          Cụ thể công việc mà em được giao như sau: ...
+          <br />
+          <ul>
+            <li>Nodejs + Seminar</li>
+            <li>Tìm hiểu về các hệ thống quảng cáo trực tuyến, Real-time Bidding (RTB), cách hoạt động của các Ad Exchange lớn trên TG (Double Click, Google Adsense ..., Ants của VN)</li>
+            <li>Cài đặt dự án quảng cáo Ad Exchange (cho công ty BGate)</li>
+          </ul>
+
+        </aside>
+      </section>
+
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <section>
+        <p>Tìm hiểu</p>
+        <h3>Node.js và các ứng dụng</h3>
+        <p>
+          <img src="/img/nodejs.png" alt="" />
+        </p>
+      </section>
+
+
+      <section>
+        <h3>Node.js</h3>
+        <p>
+          Google Chrome V8 Engine
+        </p>
+        <p class="fragment">Nguồn mở</p>
+
+        <p class="fragment">
+          Ứng dụng Web
+          <span class="fragment">Real-time (Socket.io)</span>
+        </p>
+
+        <aside class="notes">
+          NodeJS là một mã nguồn được xây dựng dựa trên nền tảng Javascript V8 Engine Ban đầu được sử dụng để xây dựng các ứng dụng web. Đặc biệt là Web Single Page App và Realtime
+        </aside>
+      </section>
+
+      <section>
+        <h3>Ưu điểm</h3>
+
+        <ul>
+          <li>Sử dụng duy nhất 1 ngôn ngữ Javascript</li>
+          <li class="fragment">Module hóa.
+            <pre><code>var fs = require('fs')</code></pre></li>
+          <li class="fragment">Lập trình sự kiện, bất đồng bộ</li>
+        </ul>
+
+        <aside class="notes">
+          Có khá nhiều ưu điểm:
+          <ul>
+            Sử dụng 1 ngôn ngữ cho client và server.
+
+          </ul>
+        </aside>
+      </section>
+
+
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <!-- ------------------------------- -->
+      <section data-background="#00aba9">
+        <p>Tìm hiểu và cài đặt</p>
+        <h1>Dự án BGATE</h1>
+
+
+
+        <aside class="notes">
+          Trong quá trình tìm hiểu Node.js, PTN thí nghiệm có nhận được 1 đơn đặt hàng từ phía
+          Cty BDA (là 1 công ty về truyền thông)
+
+          Muốn xây dựng 1 hệ thống quảng cáo
+          <br />
+        </aside>
+      </section>
+
+      <section>
+        <h3>Quảng cáo trực tuyến</h3>
+
+        <p>
+          <img src="/img/quang-cao.jpg" alt="" />
+        </p>
+
+        <aside class="notes">
+          Đây là dạng quảng cáo trực tuyến.
+          <br />
+          Em đc giao nhiệm vụ tìm hiểu về các loại quảng cáo, các cty lớn
+          tương tự, các Ad Network, Ad Exchange ....
+        </aside>
+      </section>
+
+      <section data-transition="fade">
+        <h3>Quảng cáo trực tuyến</h3>
+
+        <ul>
+          <li>Quảng cáo thuần</li>
+          <li class="fragment">Quảng cáo tìm kiếm</li>
+        </ul>
+
+        <aside class="notes">
+          Quảng cáo thuần là dạng cơ bản nhất. người mua và bán trực tiếp trao đổi với nhau.
+          Đặt quảng cáo trong 1 khoảng thời gian nhất định. Nhược điểm.
+          (bấm)
+          Quảng cáo tìm kiếm.
+        </aside>
+      </section>
+
+      <section data-transition="fade">
+        <img src="/img/quang-cao-tim-kiem.png" alt="" />
+      </section>
+
+      <section data-transition="fade">
+        <h3>Quảng cáo trực tuyến</h3>
+
+        <ul>
+          <li>Quảng cáo thuần</li>
+          <li>Quảng cáo tìm kiếm</li>
+          <li>Quảng cáo hiển thị</li>
+        </ul>
+        <aside class="notes">
+          Quảng cáo hiển thị: đang rất phổ biến hiện nay, thương thấy trên các website.
+          (next)
+        </aside>
+      </section>
+
+      <section data-transition="fade">
+        <img src="/img/quang-cao-hien-thi.png" alt="" />
+
+        <aside class="notes">
+          Các website sẽ đặt 1 đoạn code trên website. Quảng cáo sẽ tự động hiển thị.
+          Tự đếm lượt click ...
+        </aside>
+      </section>
+
+      <section data-transition="fade">
+        <h3>Quảng cáo trực tuyến</h3>
+
+        <ul>
+          <li>Quảng cáo thuần</li>
+          <li>Quảng cáo tìm kiếm</li>
+          <li><strong>Quảng cáo hiển thị</strong></li>
+          <li>.....</li>
+
+
+        </ul>
+
+        <aside class="notes">
+          Và còn nhiều loại quảng cáo khác.
+          Dự án BGate là loại quảng cáo mạng hiển thị.
+          (bấm next)
+          ==> Mục tiêu: xây dựng hệ thống kế nối giữa người mua và bán quảng cáo.
+          Và hệ thống đấu giá quảng cáo thông qua phương thức RTB
+        </aside>
+      </section>
+
+      <section>
+        <h1>BGATE</h1>
+
+        <aside class="notes">
+          ==> Mục tiêu: xây dựng hệ thống kế nối giữa người mua và bán quảng cáo.
+          Hệ thống này được gọi là Ad Exchange (next)
+
+          Và hệ thống đấu giá quảng cáo thông qua phương thức RTB
+        </aside>
+      </section>
+
+
+      <section>
+        <h2>Hệ thống Ad Exchange</h2>
+
+        <aside class="notes">
+          ANTS Ad Exchange là một nền tảng quảng cáo thời gian thực cung cấp
+          cho các nhà quảng cáo một công cụ đơn giản, dễ sử dụng và đủ mạnh mẽ
+           để đem lại thành công cho chiến dịch.
+
+        </aside>
+      </section>
+
+      <section>
+        <h3>BGATE</h3>
+
+        <p>1. BGate Dashboard</p>
+          <p>2. BGate RTB</p>
+        </ol>
+
+        <aside class="notes">
+        Về cơ bản, BGate ở giai đoạn 1 chỉ yêu cầu xây dựng thành công 1 kênh
+        giúp người mua/bán QC kết nối lại được với nhau.
+        <br />
+        ....
+        2 phần chính của BGate là Dashboard và RTB.
+        <br />
+        <ul>
+          <li>Dashboard: làm băng PHP, có tham khảo 1 số dự án nguồn mở</li>
+          <li>RTB: làm bằng Node.js + MongoDB (Redis). </li>
+        </ul>
+
+
+
+        2 module này được đồng bộ dữ liệu với nhau.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Dashboard</h2>
+        <p>
+
+          <img src="/img/bgate-dashboard.png" alt="" />
+        </p>
+
+        <aside class="notes">
+          BGate dashboard đơn giản cho Publisher và Advertiser đăng ký.
+          Publicsher là người có trang web ...
+          Advertiser mong muốn đc đặt quảng cáo ...
+        </aside>
+      </section>
+
+      <section>
+        <h2>BGate RTB</h2>
+
+        <p>
+          <img src="/img/rtb.jpg" alt="" />
+        </p>
+
+
+        <aside class="notes">
+          Dữ liệu đc kết nối đến CSDL của Dashboard -> lưu trên bộ nhớ server.
+          <br />
+          Khó khăn: mỗi bid phải đc xử lý trong 100ms. (next)
+          Do yêu cầu kết nối đến các Ad Exchange khác.
+        </aside>
+      </section>
+
+      <section>
+            <h1>&lt; 100ms</h1>
+
+            <aside class="notes">
+              Tối ưu hóa code <br />
+              Xử lý hết trên RAM <br />
+              Viết lại các thư viện trên C++ <br />
+
+              Và việc đấu giá diễn ra ngay tức khắc.
+            </aside>
+      </section>
+
+      <section>
+        <img src="/img/300x250-bgate.png" alt="" />
+        <aside class="notes">
+          Và kết quả đấu giá thắng sẽ được render hiển thị.
+          <br />
+          Khi người dùng nhìn thấy banner sẽ đc tính 1 impression.
+          <br />
+          Click tính tiền
+          <br />
+          Mốt số thuật toán cơ bản chống gian lận.
+        </aside>
+      </section>
+
+      <section>
+        <h3>Kết luận</h3>
+        <p>
+          <ul>
+            <li>Kỹ năng nghiên cứu, tìm hiểu</li>
+            <li>Làm việc nhóm + độc lập</li>
+            <li>Kỹ năng trình bày vấn đề</li>
+          </ul>
+
+
+        </p>
+
+        <aside class="notes">
+          Và cuối cùng em xin kết luận trong quá trình thực tập.
+
+          <br />
+          Làm nhóm (Trello  + Excel)
+          <br />
+          Trình bày vấn đề: Team  + Khách hang
+          <br />
+
+        </aside>
+      </section>
+
+      <section class="left">
+        <h1>THANK YOU</h1>
+        <p>
+          <img src="img/tho-bay-mau-end.png" />
+        </p>
+        <aside class="notes">
+            Một lần nữa em xin cám ơn các anh chị, cám ơn thầy Hùng
+            đã tận tình giúp đỡ các bạn.
+            <br />
+            Không chỉ trong dự án này, mà còn nhiều việc khác.
+            <br />
+            Bản thân mong muốn start up ....
+        </aside>
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+
+      multiplex: {
+        // Example values. To generate your own, see the socket.io server instructions.
+        secret: '14660872479464167992', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+        id: '8e46452d43df0014', // Obtained from socket.io server
+        url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh' // Location of socket.io server
+      },
+
+      // Optional reveal.js plugins
+      dependencies: [{
+          src: 'lib/js/classList.js',
+          condition: function() {
+            return !document.body.classList;
+          }
+        }, {
+          src: 'plugin/markdown/marked.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]');
+          }
+        }, {
+          src: 'plugin/markdown/markdown.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]');
+          }
+        }, {
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        }, {
+          src: 'plugin/zoom-js/zoom.js',
+          async: true
+        }, {
+          src: 'plugin/notes/notes.js',
+          async: true
+        }, {
+          src: '//cdn.socket.io/socket.io-1.3.5.js',
+          async: true
+        }, {
+          src: 'plugin/multiplex/client.js',
+          async: true
+        },
+
+      ],
+
+      parallaxBackgroundHorizontal: 200,
+      parallaxBackgroundVertical: 50,
+      parallaxBackgroundImage: '',
+
+    });
+
+    Reveal.configure({
+      slideNumber: true
+    });
+    // Reveal.toggleOverview();
+  </script>
+
+</body>
+
+</html>
