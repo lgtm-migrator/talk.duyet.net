@@ -1,5 +1,4 @@
-Seminar, introduction, ...
-
+Presentation slides:
 
 * Chatbot:  Semantic Parsing and Logical Forms - [/semantic-parser/](/semantic-parser/semantic-parser.pdf)
 * Why Docker? (ISLab) - [/why-docker](/why-docker)
