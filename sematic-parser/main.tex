@@ -1,0 +1,418 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\title{Chatbot: Semantic Parsing and Logical Forms}
+
+% A subtitle is optional and this may be deleted
+% \subtitle{Optional Subtitle}
+
+\author{Van-Duyet LE}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+% \institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
+% {
+%   \inst{1}%
+%   Department of Computer Science\\
+%   University of Somewhere
+%   \and
+%   \inst{2}%
+%   Department of Theoretical Philosophy\\
+%   University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{Ho Chi Minh, 05/2018}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{NLP, Chatbot}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% Let's get started
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Logical Forms and Denotations}
+
+\subsection{Chatbot}
+
+\begin{frame}{An Example Chatbot}
+
+    \begin{example}
+    
+        \begin{table}[]
+        \centering
+        \caption{Lunch Ordering}
+        \label{lunch-ordering}
+        \begin{tabular}{clr}
+          & \textbf{Utterance}                   & \textbf{Intent} \\
+        M & Hello, can I help you?               & greeting        \\
+        H & Yes, I'd like to have some luch      & askMenu         \\
+        M & Would you like a starter?            & askStarter      \\
+        H & Yes, I'd like a chicken soup, please & chooseStarter   \\
+        M & Would you like anything to drink?    & askDrink        \\
+        H & No, thanks                           & confirmation   
+        \end{tabular}
+        \end{table}
+        
+    \pause
+    \end{example}
+    
+    
+    Every chatbot needs \textbf{intent detection} and \textbf{entity extraction}.
+
+\end{frame}
+
+\begin{frame}{Is Your Bot Intelligent?}
+    \begin{itemize}
+        \item Intent detection and entity extraction are not sufficient to make your chatbots intelligent
+        \pause
+        \item They cannot answer questions such as:
+        \begin{itemize}
+            \item \textit{What is the tallest mountain in Vietnam?}
+            \item \textit{What is the capital in Vietnam?}
+            \item \textit{What is three plus three plus one?}
+            \item \textit{Who is Obama?}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Two Main Components of a Chatbot System}
+
+\begin{frame}{Two Main Components of a Chatbot System}
+    \begin{enumerate}
+        \item \textbf{AI Engine}: language understanding \& intent detection
+        \item \textbf{Dialog Engine}: state machine that executes context-driven workflows with scope variables
+    \end{enumerate}
+\end{frame}
+
+
+\section{Parsing Utterances}
+
+\begin{frame}{Semantic Parsing}
+A semantic parsing maps natural language utterances into an intermediate logical form, which is executed to produce a denotation.
+
+\begin{block}{A simple arithmetic task}
+    \begin{itemize}
+        \item Utterance: "What is three plus four?"
+        \item Logical form: (+ 3 4)
+        \item Denotation: 7
+    \end{itemize}
+\end{block}
+
+\begin{block}{A question answering task}
+    \begin{itemize}
+        \item Utterance: "What is the capital of Vietnam?"
+        \item Logical form: (capital "Vietnam")
+        \item Denotation: "Hanoi"
+    \end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Semantic Parsing}
+
+\begin{block}{A travel agent bot}
+    \begin{itemize}
+        \item Utterance: \textit{Show me flights to Hanoi leaving tomorrow}
+        \item Logical form: \textit{(and (type flight) (destination Hanoi) (departureDate 2018.05.10))}
+        \item Denotation: \textit{(list ...)}
+    \end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Semantic Representations}
+    \begin{itemize}
+        \item Semantic representations are generally logical forms, which are
+expressions in a fully specified, unambiguous artificial language.
+        \item There are a variety of different formalisms:
+            \begin{itemize}
+                \item lambda calculus
+                \item natural logics
+                \item diagrammatic languages
+                \item programming languages
+                \item robot controller languages
+                \item Grammar formalism based schemes:
+                \begin{itemize}
+                    \item Dependency Formalism
+                    \item Combinatory Categorial Grammar (CCG)
+                    \item Head-Phrase Structure Grammar (HPSG)
+                    \item Lexicalized Tree Adjoining Grammar (LTAG)
+                \end{itemize}
+                \item database query languages
+                \item knowledge-based query languages (SPARQL, etc.)
+                \item lambda dependency-based compositional semantics
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Logical Forms}
+
+\begin{frame}{Logical Forms}
+    \begin{block}{Logical Forms}
+        A \textbf{logical form} is a hierarchical expression. Primitive logical forms
+represent concrete values:
+        \begin{itemize}
+            \item (boolean true)
+            \item (number 23)
+            \item (string "Chao buoi sang")
+            \item (fb:en.obama)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Logical Forms}
+    \begin{itemize}
+        \item Logical forms can be constructed recursively by a function name
+followed by arguments, which are themselves logical forms
+        \begin{itemize}
+            \item \texttt{(call + (number 3) (number 4))}
+            \item \texttt{(call java.lang.Math.cos (number 0))}
+            \item \texttt{(call if (call < (number 3) (number 4)) (string yes) (string no))}
+            \item \texttt{(call .indexOf (string "Duyet dep trai") (string "dep"))}
+        \end{itemize}
+        \item We can execute a logical form and get the denotation (answer): 
+        \begin{center}
+            \centering
+            \fbox{
+              \parbox{.6\textwidth}{
+                \centering
+                \texttt{(call + (number 3) (number 4))}
+              }
+            }
+            \\
+            \Downarrow \\
+            \fbox{
+              \parbox{.2\textwidth}{
+                \centering
+                \texttt{(number 7)}
+              }
+            }
+        \end{center}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Parsing Utterances to Logical Forms}
+    \begin{itemize}
+        \item \textbf{How to map a natural language utterance into a logical form?}
+        \item The key framework is compositionality:
+        \begin{itemize}
+            \item The meaning of a full sentence is created by combining the meanings of its parts
+            \item Meanings are represented by logical forms.
+        \end{itemize}
+        \item Classical and powerful approach: use a \textbf{formal grammar}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Formal grammar}
+A grammar is a set of rules which specify how to combine logical
+forms to build more complex ones in a manner that is guided by the
+natural language
+
+\begin{example}
+    \begin{itemize}
+        \item \texttt{(rule \$Expr (\$PHRASE) (NumberFn))}
+        \item \texttt{(rule \$Operator (plus) (ConstantFn (lambda y (lambda x (call +(var x)(var y))))))}
+        \item \texttt{(rule \$Operator (times) (ConstantFn (lambda y (lambda x (call * (var x)(var y))))))}
+        \item \texttt{(rule \$Partial ($Operator $Expr) (JoinFn forward))}
+    \end{itemize}
+\end{example}
+\end{frame}
+
+\begin{frame}{Parsing }
+    \begin{itemize}
+        \item Now, the utterance "What is three plus four?" should give the output (number 7)
+        \item A longer sentence such as "What is three plus four times
+two? should give two derivations:
+        \begin{itemize}
+            \item \texttt{(number 14)}
+            \item \texttt{(number 11)}
+        \end{itemize}
+        \item A parser is an actual algorithm that takes the grammar and generates those derivations.
+        \begin{itemize}
+            \item INP: \texttt{What is three plus four?}
+            \item OUT: \texttt{(derivation (formula (((lambda y (lambda x (call +
+(var x) (var y)))) (number 4)) (number 3))) (value
+(number 7)))}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Parsing Utterances to Logical Forms}
+    \begin{itemize}
+        \item A given utterance might be consistent with multiple logical forms, creating ambiguity
+        \item \texttt{INP: What is three plus four times two?}
+        \item OUT:
+        \begin{enumerate}
+            \item \texttt{(derivation (formula (((lambda y (lambda x (call + (var
+x) (var y)))) (((lambda y (lambda x (call * (var x) (var
+y)))) (number 2)) (number 4))) (number 3))) (value
+(number 11)))}
+            \item \texttt{(derivation (formula (((lambda y (lambda x (call * (var
+x) (var y)))) (number 2)) (((lambda y (lambda x (call +
+(var x) (var y)))) (number 4)) (number 3)))) (value
+(number 14)))}
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Parsing Utterances to Logical Forms}
+    \begin{itemize}
+        \item Computational challenge: the number of candidate logical forms is
+in general exponential in the length of the sentence.
+        \item In the question \textit{What kind of system of government does the United States have?} (Berant et al., 2013):
+        \begin{itemize}
+            \item the phrase "United States" maps to 231 entities in the lexicon,
+            \item the verb "have" maps to 203 binaries,
+            \item the phrases "kind", "system", and "government" all map to many
+different unary and binary predicates.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Learning for Parsing Utterances to Logical Forms}
+
+\begin{frame}{Learning}
+    \begin{itemize}
+        \item Machine learning concerns the ability to generalize from a set of past
+observations or experiences in a way that leads to improved
+performance on a future task (T. Mitchel, 1997).
+        \item A ML system has 3 integral pieces:
+        \begin{enumerate}
+            \item a \textbf{feature representation} of the data
+            \item an \textbf{objective function}
+            \item an algorithm for \textbf{optimizing} the objective function
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Using Machine Learning to get Logical Forms}
+    Using Machine Learning for Parsing Utterances to Logical Forms?
+    
+\end{frame}
+
+
+% Placing a * after \section means it will not show in the
+% outline or table of contents.
+\section*{Summary}
+
+\begin{frame}{Summary}
+  \begin{itemize}
+  \item
+    Many existing chatbot systems have mostly used a swallow semantic
+representation of text, disregarding significant meaning encoded in
+human language
+  \item
+    Recent logical and statistical approaches have identified methods for
+mapping utterances to meanings efficiently.
+  \end{itemize}
+  
+  \end{frame}
+
+
+
+% All of the following is optional and typically not needed. 
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{For Further Reading}
+    
+    \begin{itemize}
+        \item Jonathan Herzig and Jonathan Berant, "Neural Semantic Parsing over
+Multiple Knowledge-bases", Proceedings of ACL, 2017
+        \item Jonathan Berant et al., "Semantic Parsing on Freebase from
+Question-Answer Pairs", Proceedings of EMNLP, 2013.
+        \item Phuong Le-Hong and Duc-Thien Bui, "A Factoid Question Answering
+System for Vietnamese", Proceedings of WWW Companion, 2018.
+    \end{itemize}
+
+\end{frame}
+
+\end{document}
+
+
