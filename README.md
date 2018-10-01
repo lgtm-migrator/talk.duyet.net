@@ -1,5 +1,6 @@
 Presentation slides:
 
+* Design Data Pipeline in AWS - [/data-pipeline-aws/](/data-pipeline-aws/design-datapipeline-aws.pdf)
 * Overview about Sentiment Analysis - [/senti/senti.pdf](/senti/senti.pdf)
 * Chatbot:  Semantic Parsing and Logical Forms - [/semantic-parser/](/semantic-parser/semantic-parser.pdf)
 * Why Docker? (ISLab) - [/why-docker](/why-docker)
